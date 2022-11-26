@@ -7,11 +7,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.humanresourcemanagement.api.model.Department;
 import com.humanresourcemanagement.api.model.Employee;
-import com.humanresourcemanagement.api.model.Manager;
 import com.humanresourcemanagement.api.service.EmployeeService;
 
 @RestController
@@ -31,13 +33,13 @@ public class EmployeeController {
 	
 	@GetMapping("/getall")
 	public ResponseEntity<List<Employee>> getAll(){
-		List<Employee> employees = service.getAll();
-		for(Employee e :employees) {
-			if(e instanceof Manager)
-				System.out.println(e.getName());
-		}
 		return new ResponseEntity<List<Employee>>(service.getAll(),HttpStatus.OK);
 	}
 	
+	@GetMapping("/getbydepartment/{iddepartment}")
+	public ResponseEntity<List<Employee>> getAllEmployeeByDepartment(@PathVariable("iddepartment") int id){
+		return new ResponseEntity<List<Employee>>(service.getAllEmployeeByDepartment(id), HttpStatus.OK);
+	}
+
 
 }
