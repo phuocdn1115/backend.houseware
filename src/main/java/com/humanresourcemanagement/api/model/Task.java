@@ -20,7 +20,7 @@ public class Task {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name = "createdTime")
+	@Column(name = "createdtime")
 	private long createdTime;
 	
 	@Column(name = "estimate")
@@ -36,11 +36,11 @@ public class Task {
 	private String status;
 	
 	@ManyToOne
-	@JoinColumn(name = "madeBy", nullable = false)
+	@JoinColumn(name = "madeby", nullable = false)
 	private Employee madeBy;
 	
 	@ManyToOne
-	@JoinColumn(name = "assignTo", nullable = true)
+	@JoinColumn(name = "assignto", nullable = false)
 	private Employee assignTo;
 
 	public Task() {

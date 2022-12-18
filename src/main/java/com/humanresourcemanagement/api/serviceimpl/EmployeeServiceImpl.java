@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.humanresourcemanagement.api.model.Department;
 import com.humanresourcemanagement.api.model.Employee;
+import com.humanresourcemanagement.api.model.Task;
 import com.humanresourcemanagement.api.repository.EmployeeRepository;
 import com.humanresourcemanagement.api.service.EmployeeService;
 
@@ -22,8 +23,12 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public Optional<Employee> checkLogin(String username, String password) {
-		return repository.checkLogin(username, password);
+	public Employee checkLogin(String username, String password) {
+		Employee e = repository.checkLogin(username, password);
+		if(e== null){
+			e = new Employee();
+		}
+		return e;
 	}
 
 	@Override
@@ -54,6 +59,23 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Override
 	public void deleteEmployee(Employee e) {
 		repository.delete(e);
+	}
+
+	@Override
+	public List<Task> getAllTaskOfEmployee(int idEmployee) {
+		return repository.getAllTaskOfEmployee(idEmployee);
+	}
+
+	@Override
+	public List<Task> getAllTaskMade(int idEmployee) {
+		// TODO Auto-generated method stub
+		return repository.getAllTaskMadeByEmployee(idEmployee);
+	}
+
+	@Override
+	public List<Task> getAllTaskDone(int idEmployee) {
+		// TODO Auto-generated method stub
+		return repository.getAllTaskDone("DONE", idEmployee);
 	}
 
 }

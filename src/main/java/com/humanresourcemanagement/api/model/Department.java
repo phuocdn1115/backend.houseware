@@ -35,8 +35,8 @@ public class Department {
 	@Column(name="description")
 	private String description;
 	
-	@Column(name="createdTime")
-	private long createdTime;
+	@Column(name="createdtime")
+	private Long createdTime;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "department")
@@ -47,7 +47,7 @@ public class Department {
 		this.employees = new ArrayList<Employee>();
 	}
 
-	public Department(String name, int capacity, String description, long createdTime) {
+	public Department(String name, int capacity, String description, Long createdTime) {
 		super();
 		this.name = name;
 		this.capacity = capacity;
@@ -96,11 +96,11 @@ public class Department {
 		this.employees = employees;
 	}
 
-	public long getCreatedTime() {
+	public Long getCreatedTime() {
 		return createdTime;
 	}
 
-	public void setCreatedTime(long createdTime) {
+	public void setCreatedTime(Long createdTime) {
 		this.createdTime = createdTime;
 	}
 	

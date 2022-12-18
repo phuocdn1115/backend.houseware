@@ -10,6 +10,6 @@ public interface DepartmentService {
 	Department createDepartment(Department department);
 	Department updateDepartment(Department department);
 	void deleteEmployee(int id);
-	
+	Optional<Department> getById(int id);
 	
 }
