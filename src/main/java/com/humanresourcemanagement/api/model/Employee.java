@@ -37,7 +37,7 @@ public class Employee{
 	private String email;
 	
 	@Column(name ="dob")
-	private long dob;
+	private String dob;
 	
 	@Column(name = "tel")
 	private String tel;
@@ -87,7 +87,7 @@ public class Employee{
 		this.notices = new ArrayList<Notice>();
 	}
 
-	public Employee(String name, String email, long dob, String tel, String gender, String address, String homeTown,
+	public Employee(String name, String email, String dob, String tel, String gender, String address, String homeTown,
 			String username, String password, String position, String description) {
 		super();
 		this.name = name;
@@ -160,10 +160,10 @@ public class Employee{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public long getDob() {
+	public String getDob() {
 		return dob;
 	}
-	public void setDob(long dob) {
+	public void setDob(String dob) {
 		this.dob = dob;
 	}
 
